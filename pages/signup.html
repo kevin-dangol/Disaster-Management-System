@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Disaster Management System</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="auth-bg">
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-links">
+        <a href="map.html" class="nav-link">Map</a>
+        <a href="login.html" class="nav-link right-nav-link">Login</a>
+        <a href="../index.html" class="nav-link right-margin-nav-link">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="auth-container">
+    <div class="auth-info">
+      <h1>DMS</h1>
+      <p>A way for you to keep track of disasters and get alerts and tips for it. You can sign up to receive real time alerts in sms or mails.</p>
+    </div>
+    
+    <div class="auth-form-container">
+      <div class="auth-form">
+        <h2>Sign Up</h2>
+        
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+          </div>
+          
+          <button type="submit" class="auth-button">Sign Up</button>
+          
+          <p class="auth-link-text">
+            Already have an account? <a href="login.html">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Signup functionality would be implemented with a backend.');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
