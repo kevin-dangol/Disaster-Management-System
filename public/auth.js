@@ -15,7 +15,7 @@ async function checkSession() {
         if (profileMenu) profileMenu.style.display = 'none';
         if (signupButton) signupButton.style.display = 'inline-block';
         if (adminLink) adminLink.style.display = 'none';
-        if (homeLink) homeLink.href = '../index.html';
+        if (homeLink) homeLink.href = '/Disaster-Management-System/index.html';
         return;
     }
 
@@ -32,7 +32,7 @@ async function checkSession() {
             if (profileMenu) profileMenu.style.display = 'inline-block';
             if (signupButton) signupButton.style.display = 'none';
             if (adminLink) adminLink.style.display = result.is_admin ? 'block' : 'none';
-            if (homeLink) homeLink.href = '../pages/home.html';
+            if (homeLink) homeLink.href = '/Disaster-Management-System/pages/home.html';
 
             
             if (adminLink && window.location.pathname.includes('admin.html')) {
@@ -47,7 +47,7 @@ async function checkSession() {
             if (profileMenu) profileMenu.style.display = 'none';
             if (signupButton) signupButton.style.display = 'inline-block';
             if (adminLink) adminLink.style.display = 'none';
-            if (homeLink) homeLink.href = '../index.html';
+            if (homeLink) homeLink.href = '/Disaster-Management-System/index.html';
         }
     } catch (error) {
         console.error('Session check error:', error);
@@ -58,7 +58,7 @@ async function checkSession() {
         if (profileMenu) profileMenu.style.display = 'none';
         if (signupButton) signupButton.style.display = 'inline-block';
         if (adminLink) adminLink.style.display = 'none';
-        if (homeLink) homeLink.href = '../index.html';
+        if (homeLink) homeLink.href = '/Disaster-Management-System/index.html';
     }
 }
 
@@ -74,7 +74,7 @@ async function logout() {
         if (result.success) {
             localStorage.removeItem('token');
             localStorage.removeItem('is_admin');
-            window.location.href = '../../index.html';
+            window.location.href = '/Disaster-Management-System/index.html';
         }
     } catch (error) {
         console.error('Logout error:', error);
