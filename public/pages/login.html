@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Disaster Management System</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="bg">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="/public/pages/map.html" class="nav-link">Map</a>
+                <a href="/public/pages/contacts.html" class="nav-link">Emergency Contacts</a>
+                <a href="/public/pages/signup.html" class="nav-link right-nav-link" id="signup-link">Sign Up</a>
+                <a href="/public/pages/home.html" class="nav-link right-margin-nav-link home-link">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-info">
+            <h1>DMS</h1>
+            <p>A way for you to keep track of disasters and get alerts and tips for it. You can login to receive real time alerts in sms or mails.</p>
+        </div>
+        
+        <div class="auth-form-container">
+            <div class="auth-form">
+                <form id="login-form" action="javascript:void(0);">
+                    <h2>Login</h2>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    
+                    <div class="form-group-inline">
+                        <div>
+                            <input type="checkbox" id="remember">
+                            <label for="remember" class="checkbox-label">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="auth-button">Login</button>
+                    
+                    <p class="auth-link-text">
+                        Don't have an account? <a href="/public/pages/signup.html">Sign up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("login-form").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+    
+                console.log('Submitting login request:', { username, password });
+    
+                try {
+                    const response = await fetch("http://localhost:3001/api/auth/login", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ username, password }),
+                        credentials: 'include'
+                    });
+                    const result = await response.json();
+                    showNotification(result.message, result.success ? 'info' : 'error');
+                    if (result.success) {
+                        localStorage.setItem('token', result.token);
+                        localStorage.setItem('is_admin', result.is_admin);
+                        setTimeout(() => {
+                            window.location.href = "/public/pages/home.html";
+                        }, 3000);
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    showNotification('Failed to log in. Please try again later.', 'error');
+                }
+            });
+        });     
+    </script>
+    <script src="/public/auth.js"></script>
+    <script src="/public/notifications.js"></script>
+</body>
+</html>

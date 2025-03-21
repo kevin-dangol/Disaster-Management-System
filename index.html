@@ -1,81 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disaster Management System</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management System</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body class="main-bg">
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-links">
-        <a href="pages/map.html" class="nav-link">Map</a>
-        <a href="pages/login.html" class="nav-link right-nav-link">Login</a>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="/public/pages/map.html" class="nav-link">Map</a>
+                <a href="/public/pages/contacts.html" class="nav-link">Emergency Contacts</a>
+                <a href="/public/pages/login.html" class="nav-link right-nav-link" id="login-link">Login</a>
+                <a href="/public/pages/home.html" class="nav-link right-margin-nav-link home-link">Home</a>
+            </div>
+        </div>
+    </nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Disaster Management System</h1>
-      <p>Track and monitor natural disasters around the world</p>
-      <a href="pages/signup.html" class="signup-button">Sign Up</a>
-    </div>
-  </section>
+    <section class="landing">
+        <div class="landing-content">
+            <h1>Disaster Management System</h1>
+            <p>Track and monitor natural disasters around the world</p>
+            <a href="/public/pages/signup.html" class="signup-button" id="signup-button">Sign Up</a>
+        </div>
+    </section>
 
-  <section class="disaster-cards">
-    <div class="container">
-      <div class="card-grid grid-2x2">
-        <a href="" class="disaster-card earthquake-card">
-          <div class="card-content">
-            <h3>Earthquakes</h3>
-            <div class="stats">
-              <p><span>Recent:</span> <span>5</span></p>
-              <p><span>Last 7 Days:</span> <span>12</span></p>
-              <p><span>This Year:</span> <span>47</span></p>
+    <section class="disaster-cards">
+        <div class="container">
+            <div class="card-grid grid-2x2">
+                <a href="/public/pages/disaster-earthquake.html" class="disaster-card earthquake-card">
+                    <div class="card-content">
+                        <h3>Earthquakes</h3>
+                        <div class="stats">
+                            <p><span>Recent:</span> <span>5</span></p>
+                            <p><span>Last 7 Days:</span> <span>12</span></p>
+                            <p><span>This Year:</span> <span>47</span></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/public/pages/disaster-landslide.html" class="disaster-card landslide-card">
+                    <div class="card-content">
+                        <h3>Landslides</h3>
+                        <div class="stats">
+                            <p><span>Recent:</span> <span>3</span></p>
+                            <p><span>Last 7 Days:</span> <span>8</span></p>
+                            <p><span>This Year:</span> <span>31</span></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/public/pages/disaster-flood.html" class="disaster-card flood-card">
+                    <div class="card-content">
+                        <h3>Floods</h3>
+                        <div class="stats">
+                            <p><span>Recent:</span> <span>7</span></p>
+                            <p><span>Last 7 Days:</span> <span>15</span></p>
+                            <p><span>This Year:</span> <span>62</span></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="/public/pages/disaster-wildfire.html" class="disaster-card wildfire-card">
+                    <div class="card-content">
+                        <h3>Wildfires</h3>
+                        <div class="stats">
+                            <p><span>Recent:</span> <span>4</span></p>
+                            <p><span>Last 7 Days:</span> <span>9</span></p>
+                            <p><span>This Year:</span> <span>38</span></p>
+                        </div>
+                    </div>
+                </a>
             </div>
-          </div>
-        </a>
-        <a href="" class="disaster-card landslide-card">
-          <div class="card-content">
-            <h3>Landslides</h3>
-            <div class="stats">
-              <p><span>Recent:</span> <span>3</span></p>
-              <p><span>Last 7 Days:</span> <span>8</span></p>
-              <p><span>This Year:</span> <span>31</span></p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="disaster-card flood-card">
-          <div class="card-content">
-            <h3>Floods</h3>
-            <div class="stats">
-              <p><span>Recent:</span> <span>7</span></p>
-              <p><span>Last 7 Days:</span> <span>15</span></p>
-              <p><span>This Year:</span> <span>62</span></p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="disaster-card wildfire-card">
-          <div class="card-content">
-            <h3>Wildfires</h3>
-            <div class="stats">
-              <p><span>Recent:</span> <span>4</span></p>
-              <p><span>Last 7 Days:</span> <span>9</span></p>
-              <p><span>This Year:</span> <span>38</span></p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Disaster Management System</p>
-      <p>Group 5, IIMS Sem 3</p>
-    </div>
-  </footer>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Disaster Management System</p>
+            <p>Group 5, IIMS Sem 3</p>
+        </div>
+    </footer>
+
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+    <script>
+        async function updateDisasterStats() {
+            try {
+                const response = await fetch('http://localhost:3001/api/disasters/stats');
+                const stats = await response.json();
+
+                document.querySelectorAll('.disaster-card').forEach(card => {
+                    const type = card.querySelector('h3').textContent.toLowerCase();
+                    const recent = card.querySelector('.stats p:nth-child(1) span:nth-child(2)');
+                    const week = card.querySelector('.stats p:nth-child(2) span:nth-child(2)');
+                    const year = card.querySelector('.stats p:nth-child(3) span:nth-child(2)');
+                    
+                    recent.textContent = stats.recent.find(s => s.type === type)?.count || 0;
+                    week.textContent = stats.week.find(s => s.type === type)?.count || 0;
+                    year.textContent = stats.year.find(s => s.type === type)?.count || 0;
+                });
+            } catch (error) {
+                console.error('Error updating disaster stats:', error);
+            }
+        }
+    </script>
+    <script src="/public/auth.js"></script>
+    <script src="/public/notifications.js"></script>
 </body>
 </html>

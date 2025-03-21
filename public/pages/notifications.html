@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification History - Disaster Management System</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="/public/pages/map.html" class="nav-link">Map</a>
+                <a href="/public/pages/contacts.html" class="nav-link">Emergency Contacts</a>
+                <a href="/public/pages/login.html" class="nav-link right-nav-link" id="login-link">Login</a>
+                <div class="profile-menu right-nav-link" id="profile-menu" style="display: none;">
+                    <span class="profile-icon">👤</span>
+                    <div class="dropdown-content">
+                        <a href="/public/pages/notifications.html">Notifications</a>
+                        <a href="/public/pages/admin.html" id="admin-link" style="display: none;">Admin Panel</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+                <a href="/public/pages/home.html" class="nav-link right-margin-nav-link home-link">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-form-container">
+            <div class="auth-form wide">
+                <h2>Notification History</h2>
+                <div id="notification-history"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+    <script>
+        function loadNotificationHistory() {
+            const history = JSON.parse(localStorage.getItem('notificationHistory')) || [];
+            const list = document.getElementById('notification-history');
+            list.innerHTML = '';
+
+            if (history.length === 0) {
+                list.innerHTML = '<p>No notifications yet.</p>';
+                return;
+            }
+
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.style.padding = '10px';
+                div.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+                div.innerHTML = `
+                    <div>
+                        <strong>${new Date(item.timestamp).toLocaleString()}</strong> - ${item.message}
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadNotificationHistory);
+    </script>
+    <script src="/public/auth.js"></script>
+    <script src="/public/notifications.js"></script>
+</body>
+</html>

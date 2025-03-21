@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts - Disaster Management System</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="/public/pages/map.html" class="nav-link">Map</a>
+                <a href="/public/pages/contacts.html" class="nav-link">Emergency Contacts</a>
+                <a href="/public/pages/login.html" class="nav-link right-nav-link" id="login-link">Login</a>
+                <div class="profile-menu right-nav-link" id="profile-menu" style="display: none;">
+                    <span class="profile-icon">👤</span>
+                    <div class="dropdown-content">
+                        <a href="/public/pages/notifications.html">Notifications</a>
+                        <a href="/public/pages/admin.html" id="admin-link" style="display: none;">Admin Panel</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+                <a href="/public/pages/home.html" class="nav-link right-margin-nav-link home-link">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-container">
+        <div class="form-container">
+            <div class="form">
+                <h2>Emergency Contacts</h2>
+                <div id="contacts-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+    <script>
+        async function loadContacts() {
+            try {
+                const response = await fetch('http://localhost:3001/api/disasters/contacts');
+                const contacts = await response.json();
+                const list = document.getElementById('contacts-list');
+                list.innerHTML = '';
+                contacts.forEach(contact => {
+                    const div = document.createElement('div');
+                    div.style.padding = '10px';
+                    div.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+                    div.innerHTML = `<strong>${contact.name}</strong> (${contact.type}) - ${contact.phone}`;
+                    list.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error loading contacts:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContacts();
+            setInterval(loadContacts, 60000);
+        });
+    </script>
+    <script src="/public/auth.js"></script>
+    <script src="/public/notifications.js"></script>
+</body>
+</html>

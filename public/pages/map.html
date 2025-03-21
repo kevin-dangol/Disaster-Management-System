@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map - Disaster Management System</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="bg">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-links">
+                <a href="/public/pages/map.html" class="nav-link">Map</a>
+                <a href="/public/pages/contacts.html" class="nav-link">Emergency Contacts</a>
+                <a href="/public/pages/login.html" class="nav-link right-nav-link" id="login-link">Login</a>
+                <div class="profile-menu right-nav-link" id="profile-menu" style="display: none;">
+                    <span class="profile-icon">👤</span>
+                    <div class="dropdown-content">
+                        <a href="/public/pages/notifications.html">Notifications</a>
+                        <a href="/public/pages/admin.html" id="admin-link" style="display: none;">Admin Panel</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+                <a href="/public/pages/home.html" class="nav-link right-margin-nav-link home-link">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="map-container">
+        <h1>Disaster Map</h1>
+        
+        <div class="disaster-filter">
+            <button class="filter-button" data-type="all">All Disasters</button>
+            <button class="filter-button" data-type="earthquake">Earthquakes</button>
+            <button class="filter-button" data-type="landslide">Landslides</button>
+            <button class="filter-button" data-type="flood">Floods</button>
+            <button class="filter-button" data-type="wildfire">Wildfires</button>
+        </div>
+        
+        <div id="map-view" class="map-view">
+            <div class="map-loading">
+                <i class="fas fa-triangle-exclamation"></i>
+                <p>Map data loading...</p>
+                <p class="map-subtext">Real-time disaster data will be displayed here.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const map = L.map('map-view').setView([0, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            async function loadDisasters(type = 'all') {
+                try {
+                    const response = await fetch('http://localhost:3001/api/disasters/events');
+                    if (!response.ok) throw new Error('Failed to fetch disaster events');
+                    const disasters = await response.json();
+
+                    map.eachLayer(layer => {
+                        if (layer instanceof L.Marker) map.removeLayer(layer);
+                    });
+
+                    disasters.forEach(d => {
+                        if ((type === 'all' || type === d.type.toLowerCase()) && d.latitude && d.longitude) {
+                            const marker = L.marker([d.latitude, d.longitude])
+                                .addTo(map)
+                                .bindPopup(`${d.type} - ${d.location} (Severity: ${d.severity})`);
+                            marker._icon.classList.add(`${d.type.toLowerCase()}-pin`);
+                        }
+                    });
+
+                    document.querySelector('.map-loading').style.display = 'none';
+                } catch (error) {
+                    console.error('Error loading disasters:', error);
+                    alert('Failed to load disaster data. Please try again later.');
+                }
+            }
+
+            setInterval(() => loadDisasters(document.querySelector('.filter-button.active')?.dataset.type || 'all'), 60000);
+
+            document.querySelectorAll('.filter-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    loadDisasters(button.dataset.type);
+                });
+            });
+
+            loadDisasters();
+        });
+    </script>
+    <script src="/public/auth.js"></script>
+    <script src="/public/notifications.js"></script>
+</body>
+</html>

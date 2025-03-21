@@ -26,7 +26,7 @@ body {
 }
 
 .main-bg {
-  background-image: linear-gradient(0deg, rgba(54, 54, 54) 0%, rgba(54, 54, 54, 0.582) 50%, rgba(54, 54, 54, 0.122) 100%), url(imgs/main.jpg);
+  background-image: linear-gradient(0deg, rgba(54, 54, 54) 0%, rgba(54, 54, 54, 0.582) 50%, rgba(54, 54, 54, 0.122) 100%), url(/public/imgs/main.jpg);
   background-size: auto 60%;
   background-position: top center;
   background-repeat: no-repeat;
@@ -84,7 +84,7 @@ a {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.hero {
+.landing {
   height: 70vh;
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(imgs/main.jpg); */
   background-size: cover;
@@ -96,13 +96,13 @@ a {
   padding: 0 20px;
 }
 
-.hero-content h1 {
+.landing-content h1 {
   font-size: 48px;
   margin-bottom: 20px;
   animation: fadeIn 1s ease-out;
 }
 
-.hero-content p {
+.landing-content p {
   font-size: 20px;
   max-width: 600px;
   margin: 0 auto;
@@ -131,7 +131,6 @@ a {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Disaster Cards */
 .disaster-cards {
   padding: 60px 0;
 }
@@ -194,24 +193,23 @@ a {
   margin-bottom: 8px;
 }
 
-/* Disaster Card Types */
 .earthquake-card {
-  background-image: linear-gradient(0deg, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.2) 50%, rgba(76, 175, 80, 0.2) 100%), url(imgs/earthquake.jpg);
+  background-image: linear-gradient(0deg, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.2) 50%, rgba(76, 175, 80, 0.2) 100%), url(/public/imgs/earthquake.jpg);
   border-color: rgb(76, 175, 79);
 }
 
 .landslide-card {
-  background-image: linear-gradient(0deg, rgba(121, 85, 72, 0.2) 0%, rgba(121, 85, 72, 0.2) 50%, rgba(121, 85, 72, 0.2) 100%), url(imgs/Landslides.jpg);
+  background-image: linear-gradient(0deg, rgba(121, 85, 72, 0.2) 0%, rgba(121, 85, 72, 0.2) 50%, rgba(121, 85, 72, 0.2) 100%), url(/public/imgs/Landslides.jpg);
   border-color: rgb(121, 85, 72);
 }
 
 .flood-card {
-  background-image: linear-gradient(0deg, rgba(111, 130, 200, 0.395) 0%, rgba(111, 130, 200, 0.395) 50%, rgba(111, 130, 200, 0.395) 100%), url(imgs/flash-flood-update.jpg);
+  background-image: linear-gradient(0deg, rgba(111, 130, 200, 0.395) 0%, rgba(111, 130, 200, 0.395) 50%, rgba(111, 130, 200, 0.395) 100%), url(/public/imgs/flash-flood-update.jpg);
   border-color: rgb(111, 130, 200);
 }
 
 .wildfire-card {
-  background-image: linear-gradient(0deg, rgba(255, 87, 34, 0.2) 0%, rgba(255, 87, 34, 0.2) 50%, rgba(255, 87, 34, 0.2) 100%), url(imgs/wild\ fire.jpg);
+  background-image: linear-gradient(0deg, rgba(255, 87, 34, 0.2) 0%, rgba(255, 87, 34, 0.2) 50%, rgba(255, 87, 34, 0.2) 100%), url(/public/imgs/wild\ fire.jpg);
   border-color: rgb(255, 86, 34);
 }
 
@@ -222,8 +220,8 @@ footer {
   margin-top: 40px;
 }
 
-.auth-bg {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(imgs/main.jpg);
+.bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/public/imgs/main.jpg);
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -247,7 +245,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  padding: 170px;
 }
 
 .auth-info h1 {
@@ -355,6 +353,20 @@ footer {
   font-weight: 500;
 }
 
+.linkButton{
+
+  color:#2196F3;
+  border: none;
+  background-color: transparent;
+
+}
+
+.linkButton:hover{
+
+  color: #175f9a;
+
+}
+
 .map-bg {
   background-image: linear-gradient(rgba(71, 67, 67, 0.7), rgba(71, 67, 67, 0.7)), url('https://images.unsplash.com/photo-1576017356595-4a6bf8959191');
   background-size: cover;
@@ -451,7 +463,6 @@ footer {
   color: var(--wildfire-color);
 }
 
-/* Disaster Detail Page */
 .disaster-header {
   height: 40vh;
   display: flex;
@@ -462,19 +473,19 @@ footer {
 }
 
 .earthquake-header {
-  background-image: linear-gradient(rgba(76, 175, 80, 0.2), rgba(76, 175, 79, 0.086)), url(imgs/earthquake.jpg);
+  background-image: linear-gradient(rgba(76, 175, 80, 0.2), rgba(76, 175, 79, 0.086)), url(/public/imgs/earthquake.jpg);
 }
 
 .landslide-header {
-  background-image: linear-gradient(rgba(121, 85, 72, 0.2), rgba(121, 85, 72, 0.074)), url(imgs/Landslides.jpg);
+  background-image: linear-gradient(rgba(121, 85, 72, 0.2), rgba(121, 85, 72, 0.074)), url(/public/imgs/Landslides.jpg);
 }
 
 .flood-header {
-  background-image: linear-gradient(rgba(111, 130, 200, 0.395), rgba(111, 130, 200, 0.145)), url(imgs/flash-flood-update.jpg);
+  background-image: linear-gradient(rgba(111, 130, 200, 0.395), rgba(111, 130, 200, 0.145)), url(/public/imgs/flash-flood-update.jpg);
 }
 
 .wildfire-header {
-  background-image: linear-gradient(rgba(255, 87, 34, 0.2), rgba(255, 86, 34, 0.079)), url(imgs/wild\ fire.jpg);
+  background-image: linear-gradient(rgba(255, 87, 34, 0.2), rgba(255, 86, 34, 0.079)), url(/public/imgs/wild\ fire.jpg);
 }
 
 .disaster-header h1 {
@@ -541,7 +552,6 @@ footer {
   font-size: 14px;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -562,7 +572,6 @@ footer {
   }
 }
 
-/* Not Found Page */
 .not-found {
   text-align: center;
   padding: 100px 20px;
@@ -581,4 +590,135 @@ footer {
 .not-found a {
   color: var(--flood-color);
   text-decoration: underline;
+}
+
+.bg-container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  min-height: calc(100vh - 80px);
+}
+
+@media (min-width: 768px) {
+  .bg-container {
+    flex-direction: row;
+  }
+}
+
+.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+}
+
+.form h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.notification {
+  position: relative;
+  padding: 15px 40px 15px 20px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.notification.info {
+  background: rgba(213, 167, 236, 0.336);
+}
+
+.notification.warning {
+  background: rgba(246, 0, 0, 0.358);
+}
+
+.notification.error {
+  background: rgba(184, 40, 40, 0.473);
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.profile-menu {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 24px;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.profile-menu:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a.active {
+  background: rgba(255, 255, 255, 0.3);
 }
